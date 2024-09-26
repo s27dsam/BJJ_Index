@@ -1,0 +1,3 @@
+# Jujitsu Popularity Chart Project
+
+This project tracks the daily popularity of jujitsu athletes, teams, or events. Using FastAPI, it scrapes jujitsu-related data to generate a popularity score, which is stored in a database. The project also leverages OpenAI's API to perform image analysis and create AI-generated summaries of the daily chart. The system updates automatically, providing fresh insights into jujitsu trends every day.
