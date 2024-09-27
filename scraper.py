@@ -1,8 +1,8 @@
 import pandas as pd
 from pytrends.request import TrendReq
+from crud import store_popularity_data
 
 def scrap_google_trends_bjj_1():
-    pd.set_option('future.no_silent_downcasting', True)
     pytrends = TrendReq()
     pytrends.build_payload(kw_list=["bjj"], cat=0, timeframe='today 5-y', geo='', gprop='')
     bjj_trend = pytrends.interest_over_time()
@@ -11,7 +11,6 @@ def scrap_google_trends_bjj_1():
 
 
 def scrap_google_trends_brazilian_jiu_jitsu_2():
-    pd.set_option('future.no_silent_downcasting', True)
     pytrends = TrendReq()
     pytrends.build_payload(kw_list=["Brazilian jiu-jitsu"], cat=0, timeframe='today 5-y', geo='', gprop='')
     brazilian_jiu_jitsu_trend = pytrends.interest_over_time()
@@ -20,7 +19,6 @@ def scrap_google_trends_brazilian_jiu_jitsu_2():
 
 
 def scrap_google_trends_jujitsu_3():
-    pd.set_option('future.no_silent_downcasting', True)
     pytrends = TrendReq()
     pytrends.build_payload(kw_list=["jujitsu"], cat=0, timeframe='today 5-y', geo='', gprop='')
     jujitsu_trend = pytrends.interest_over_time()
@@ -60,7 +58,8 @@ def get_all_and_get_overall_average():
     return combined_df[['date', 'bjj', 'brazilian_jiu_jitsu', 'jujitsu', 'average']]
 
 
-from crud import store_popularity_data
+
+
 # Example usage
 popularity_data = get_all_and_get_overall_average()
 # Store the data into the database
