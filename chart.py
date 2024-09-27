@@ -17,7 +17,7 @@ def generate_popularity_chart():
         ])
 
         fig.update_layout(
-            title='Jujitsu Popularity Over Time',
+            title='',
             xaxis_title='Date',
             yaxis_title='Popularity Score'
         )

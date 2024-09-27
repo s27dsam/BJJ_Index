@@ -1,6 +1,6 @@
 import pandas as pd
 from pytrends.request import TrendReq
-from crud import store_popularity_data
+from backend.crud import store_popularity_data
 
 def scrap_google_trends_bjj_1():
     pytrends = TrendReq()

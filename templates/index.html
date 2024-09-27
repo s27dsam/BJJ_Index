@@ -1,0 +1,62 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Jujitsu</title>
+    <!-- Include Plotly.js from CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-brand">Jujitsu Analytics</div>
+        <div class="navbar-links">
+            <a href="#" id="moreInfoBtn">More Info</a>
+            <a href="#" id="sourcesBtn">Sources</a>
+        </div>
+    </nav>
+
+    <!-- Side Panels -->
+    <div id="moreInfoPanel" class="side-panel">
+        <div class="panel-header">
+            <h2>More Info</h2>
+            <span class="close-btn" id="closeMoreInfo">&times;</span>
+        </div>
+        <div class="panel-content">
+            <p>Here you can add more information about Jujitsu popularity, trends, and other relevant data.</p>
+        </div>
+    </div>
+
+    <div id="sourcesPanel" class="side-panel">
+        <div class="panel-header">
+            <h2>Sources</h2>
+            <span class="close-btn" id="closeSources">&times;</span>
+        </div>
+        <div class="panel-content">
+            <ul>
+                <li><a href="https://www.example.com/source1" target="_blank">Source 1</a></li>
+                <li><a href="https://www.example.com/source2" target="_blank">Source 2</a></li>
+                <li><a href="https://www.example.com/source3" target="_blank">Source 3</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Jujitsu Popularity Over Time</h1>
+        <div class="chart-container">
+            <!-- Render the Plotly graph -->
+            {{ graph_html | safe }}
+        </div>
+    </div>
+
+    <!-- Include JavaScript for interactivity -->
+    <script src="{{ request.url_for('static', path='script.js') }}"></script>
+</body>
+</html>
