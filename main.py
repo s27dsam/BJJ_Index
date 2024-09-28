@@ -42,7 +42,6 @@ async def popularity_chart(request: Request):
             "dates": dates,       # Pass dates to the template
             "scores": scores,     # Pass scores to the template
             # "latest_news": latest_news,   # Pass the news data here if needed in the future
-            # "error_message": error_message if 'error_message' in locals() else None
         }
     )
 
