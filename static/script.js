@@ -1,5 +1,3 @@
-// static/script.js
-
 // Get elements
 const moreInfoBtn = document.getElementById('moreInfoBtn');
 const sourcesBtn = document.getElementById('sourcesBtn');
