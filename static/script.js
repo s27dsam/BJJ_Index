@@ -1,3 +1,4 @@
+// static/script.js
 // Get elements
 const moreInfoBtn = document.getElementById('moreInfoBtn');
 const sourcesBtn = document.getElementById('sourcesBtn');
@@ -34,3 +35,4 @@ sourcesBtn.addEventListener('click', (e) => {
 closeMoreInfo.addEventListener('click', closePanels);
 closeSources.addEventListener('click', closePanels);
 overlay.addEventListener('click', closePanels);
+

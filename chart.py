@@ -1,30 +1,42 @@
 from database import SessionLocal
 from models import PopularityData
-import plotly.graph_objs as go
-from plotly.offline import plot
+# import plotly.graph_objs as go
+# from plotly.offline import plot
+#
+#
+# def generate_popularity_chart():
+#     db = SessionLocal()
+#     try:
+#         data = db.query(PopularityData).order_by(PopularityData.date).all()
+#         dates = [entry.date for entry in data]
+#         scores = [entry.popularity_score for entry in data]
+#
+#         # Create a Plotly figure
+#         fig = go.Figure(data=[
+#             go.Scatter(x=dates, y=scores, mode='lines', name='Popularity Score')
+#         ])
+#
+#         fig.update_layout(
+#             title='',
+#             xaxis_title='Date',
+#             yaxis_title='Popularity Score'
+#         )
+#
+#         # Convert the figure to HTML div string
+#         graph_html = plot(fig, output_type='div', include_plotlyjs=False)
+#         return graph_html
+#     finally:
+#         db.close()
 
 
+# chart.py
 def generate_popularity_chart():
     db = SessionLocal()
     try:
+        # Retrieve data from the database, ordered by date
         data = db.query(PopularityData).order_by(PopularityData.date).all()
-        dates = [entry.date for entry in data]
+        dates = [entry.date.strftime("%Y-%m-%d") for entry in data]  # Format dates as strings
         scores = [entry.popularity_score for entry in data]
-
-        # Create a Plotly figure
-        fig = go.Figure(data=[
-            go.Scatter(x=dates, y=scores, mode='lines', name='Popularity Score')
-        ])
-
-        fig.update_layout(
-            title='',
-            xaxis_title='Date',
-            yaxis_title='Popularity Score'
-        )
-
-        # Convert the figure to HTML div string
-        graph_html = plot(fig, output_type='div', include_plotlyjs=False)
-        return graph_html
+        return dates, scores
     finally:
         db.close()
-

@@ -1,5 +1,4 @@
-/* static/style.css */
-
+/* static/styles.css */
 /* Reset and Base Styles */
 * {
     box-sizing: border-box;
@@ -165,5 +164,21 @@ h1 {
 
     .side-panel {
         width: 100%; /* Full width on small screens */
+    }
+}
+
+/* Additional Styles for Highcharts (Optional) */
+
+/* Highcharts Chart Container */
+#popularity-chart-container {
+    width: 100%;
+    height: 400px; /* Adjust as needed */
+    margin-bottom: 40px; /* Space below the chart */
+}
+
+@media (max-width: 768px) {
+    /* Adjust chart height for smaller screens if needed */
+    #popularity-chart-container {
+        height: 300px;
     }
 }

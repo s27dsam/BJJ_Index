@@ -3,16 +3,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Jujitsu</title>
-    <!-- Include Plotly.js from CDN -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Jiu-jitsu</title>
+    <!-- Include Highcharts from CDN -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
     <!-- Top Navigation Bar -->
     <nav class="navbar">
-        <div class="navbar-brand">Jujitsu Analytics</div>
+        <div class="navbar-brand">Jiu-jitsu Analytics</div>
         <div class="navbar-links">
             <a href="#" id="moreInfoBtn">More Info</a>
             <a href="#" id="sourcesBtn">Sources</a>
@@ -26,7 +26,7 @@
             <span class="close-btn" id="closeMoreInfo">&times;</span>
         </div>
         <div class="panel-content">
-            <p>Here you can add more information about Jujitsu popularity, trends, and other relevant data.</p>
+            <p>Here you can add more information about jiu-jitsu popularity, trends, and other relevant data.</p>
         </div>
     </div>
 
@@ -49,14 +49,74 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1>Jujitsu Popularity Over Time</h1>
+        <h1>Jiu-jitsu Popularity Over Time</h1>
         <div class="chart-container">
-            <!-- Render the Plotly graph -->
-            {{ graph_html | safe }}
+            <!-- Highcharts Chart Container -->
+            <div id="popularity-chart-container"></div>
         </div>
     </div>
 
     <!-- Include JavaScript for interactivity -->
     <script src="{{ request.url_for('static', path='script.js') }}"></script>
+
+    <!-- Initialize Highcharts -->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve dates and scores passed from the backend
+            const dates = {{ dates | tojson }};
+            const scores = {{ scores | tojson }};
+
+            // Prepare data for Highcharts
+            const chartData = dates.map((date, index) => {
+                // Convert date string to timestamp
+                const timestamp = new Date(date).getTime();
+                return [timestamp, scores[index]];
+            });
+
+            Highcharts.chart('popularity-chart-container', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: ''  // You can set this to an empty string if no title is desired
+                },
+                xAxis: {
+                    type: 'datetime',
+                    title: {
+                        text: ''
+                    },
+                    labels: {
+                        format: '{value:%Y}'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Popularity Score'
+                    }
+                },
+                tooltip: {
+                    xDateFormat: '%Y-%m-%d',
+                    shared: false
+                },
+                series: [{
+                    name: '',  // series_label
+                    data: chartData,
+                    marker: {
+                        enabled: false,
+                        radius: 2
+                    },
+                    lineWidth: 2,
+                    color: '#0047AB'  // Optional: Customize the line color
+                }],
+                  legend: {
+                    enabled: false
+                    },
+                credits: {
+                    enabled: false
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
