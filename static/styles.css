@@ -1,5 +1,5 @@
 /* static/styles.css */
-/* Reset and Base Styles */
+
 * {
     box-sizing: border-box;
 }
@@ -7,9 +7,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #f5f5f5; /* Light gray background */
     color: #333; /* Dark gray text */
+    font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif; /* Apply Open Sans */
 }
 
 /* Top Navigation Bar */
@@ -54,8 +54,9 @@ body {
 /* Header */
 h1 {
     text-align: center;
-    font-weight: 300;
+    /* Removed Bodoni font */
     margin-bottom: 40px;
+    font-weight: bold;
 }
 
 /* Chart Container */

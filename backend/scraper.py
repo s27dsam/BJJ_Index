@@ -2,6 +2,7 @@ import pandas as pd
 from pytrends.request import TrendReq
 from backend.crud import store_popularity_data
 
+
 def scrap_google_trends_bjj_1():
     pytrends = TrendReq()
     pytrends.build_payload(kw_list=["bjj"], cat=0, timeframe='today 5-y', geo='', gprop='')
@@ -58,23 +59,10 @@ def get_all_and_get_overall_average():
     return combined_df[['date', 'bjj', 'brazilian_jiu_jitsu', 'jujitsu', 'average']]
 
 
-
-
 # Example usage
 popularity_data = get_all_and_get_overall_average()
 # Store the data into the database
 store_popularity_data(popularity_data)
-
-
-
-
-
-
-
-
-
-
-
 
 
 # from selenium import webdriver
@@ -98,10 +86,3 @@ store_popularity_data(popularity_data)
 #
 # # Close the browser
 # driver.quit()
-
-
-
-
-
-
-

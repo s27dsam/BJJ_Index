@@ -2,6 +2,8 @@ from database import SessionLocal
 from models import PopularityData
 import matplotlib.pyplot as plt
 import warnings
+from sklearn.linear_model import LinearRegression
+import pandas as pd
 warnings.filterwarnings("ignore")
 
 
@@ -14,9 +16,25 @@ def generate_static_popularity_chart():
         dates = [entry.date for entry in data]
         scores = [entry.popularity_score for entry in data]
 
+        # Convert dates to ordinal for regression analysis
+        dates_ordinal = [d.toordinal() for d in dates]
+
+        # Create a DataFrame for easier manipulation
+        df = pd.DataFrame({'Date': dates, 'Score': scores, 'Date_Ordinal': dates_ordinal})
+
+        # Linear regression for trend line
+        model = LinearRegression()
+        model.fit(df[['Date_Ordinal']], df['Score'])
+
+        # Predict scores using the linear model to create a trend line
+        trend_scores = model.predict(df[['Date_Ordinal']])
+
         # Create a Matplotlib figure
         plt.figure(figsize=(10, 6))
-        plt.plot(dates, scores, label='Popularity Score', color='blue', linestyle='-', marker=None)
+        plt.plot(df['Date'], df['Score'], label='Popularity Score', color='blue', linestyle='-', marker=None)
+
+        # Plot the trend line
+        plt.plot(df['Date'], trend_scores, label='Trend Line', color='red', linestyle='--')
 
         # Add title and labels
         plt.title('Jujitsu Popularity Over Time')

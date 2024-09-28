@@ -21,11 +21,6 @@ templates = Jinja2Templates(directory="templates")
 RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY")
 RAPIDAPI_HOST = "google-news13.p.rapidapi.com"
 
-# Endpoint to fetch news data (commented out as per your current requirement)
-# def fetch_news():
-#     # Your existing fetch_news implementation
-#     pass
-
 
 @app.get("/index", response_class=HTMLResponse)
 async def popularity_chart(request: Request):

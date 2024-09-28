@@ -36,3 +36,22 @@ closeMoreInfo.addEventListener('click', closePanels);
 closeSources.addEventListener('click', closePanels);
 overlay.addEventListener('click', closePanels);
 
+function linearRegression(data) {
+    const n = data.length;
+    let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+
+    data.forEach(point => {
+        const x = point[0];
+        const y = point[1];
+        sumX += x;
+        sumY += y;
+        sumXY += x * y;
+        sumX2 += x * x;
+    });
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+
+    return { slope, intercept };
+}
+
