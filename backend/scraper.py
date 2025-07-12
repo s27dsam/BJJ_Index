@@ -65,24 +65,3 @@ popularity_data = get_all_and_get_overall_average()
 store_popularity_data(popularity_data)
 
 
-# from selenium import webdriver
-# from selenium.webdriver.common.by import By
-#
-# # Initialize the Selenium WebDriver (for example, using Chrome)
-# driver = webdriver.Chrome()  # Make sure chromedriver is installed and in PATH
-#
-# # Open the webpage
-# driver.get('https://ibjjf.com/certified-black-belts')
-#
-# # Wait for the page to load completely
-# driver.implicitly_wait(10)  # Adjust as needed for slow page load
-#
-# # Locate the element containing the total number (adjust based on inspection)
-# total_element = driver.find_element(By.CLASS_NAME, 'totals')
-#
-# # Extract and print the total value
-# total_value = total_element.text
-# print(total_value)  # Output should be '10090'
-#
-# # Close the browser
-# driver.quit()

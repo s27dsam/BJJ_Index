@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 # Get the absolute path to the database file
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASE_PATH = os.path.join(BASE_DIR, 'jujitsu_popularity.db')
 
 # Create the full database URI
